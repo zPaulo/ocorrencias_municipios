@@ -383,7 +383,7 @@
                     📁 <span id="uploadSectionText">Ocultar Upload</span>
                 </button>
                 <button type="button" id="toggleStatsSectionBtn" class="control-btn">
-                    📊 <span id="statsSectionText">Ocultar Stats</span>
+                    📊 <span id="statsSectionText">Ocultar Status</span>
                 </button>
                 <button type="button" id="maximizeMapBtn" class="control-btn">
                     🔍 <span id="mapSizeText">Maximizar Mapa</span>
@@ -557,10 +557,10 @@
                 
                 if (statsSection.classList.contains('section-hidden')) {
                     statsSection.classList.remove('section-hidden');
-                    toggleText.textContent = 'Ocultar Stats';
+                    toggleText.textContent = 'Ocultar Status';
                 } else {
                     statsSection.classList.add('section-hidden');
-                    toggleText.textContent = 'Exibir Stats';
+                    toggleText.textContent = 'Exibir Status';
                 }
                 
                 // Redimensionar mapa após mudança
