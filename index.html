@@ -35,16 +35,68 @@
             display: flex;
             align-items: center;
             gap: 20px;
+            width: 100%;
+            justify-content: space-between;
+        }
+
+        .header-info {
+            flex: 1;
+        }
+
+        .header-controls {
+            display: flex;
+            gap: 10px;
+            flex-shrink: 0;
+        }
+
+        .control-btn {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 8px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 12px;
+            transition: background-color 0.3s;
+            white-space: nowrap;
+        }
+
+        .control-btn:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .map-container.maximized {
+            height: 85vh;
+        }
+
+        body.map-maximized .upload-section,
+        body.map-maximized .stats-section,
+        body.map-maximized .table-wrapper {
+            display: none;
+        }
+
+        body.map-maximized .map-container {
+            height: calc(100vh - 120px);
+        }
+
+        .upload-section.section-hidden,
+        .stats-section.section-hidden {
+            display: none !important;
+        }
+
+        .section-hidden {
+            display: none !important;
         }
 
         .header-content img {
             height: 80px;
         }
 
-        #map {
+        .map-container {
             width: 100%;
             height: 65vh;
             border-bottom: 5px solid #3BB540;
+            transition: height 0.3s ease;
         }
 
         .legend {
@@ -133,6 +185,188 @@
         .data-table tbody tr:hover {
             background-color: #f1f1f1;
         }
+
+        /* Estilos para a seção de upload */
+        .upload-section {
+            background-color: #ffffff;
+            padding: 20px;
+            border-bottom: 2px solid #3BB540;
+        }
+
+        .upload-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .upload-container h3 {
+            color: #3BB540;
+            margin: 0 0 10px;
+        }
+
+        .upload-container p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .upload-area {
+            border: 2px dashed #3BB540;
+            border-radius: 10px;
+            padding: 30px;
+            background-color: #f9fff9;
+            transition: all 0.3s ease;
+            margin-bottom: 15px;
+        }
+
+        .upload-area:hover {
+            border-color: #2e8b34;
+            background-color: #f0fff0;
+        }
+
+        .upload-area.dragover {
+            border-color: #2e8b34;
+            background-color: #e8f5e8;
+            transform: scale(1.02);
+        }
+
+        .upload-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .upload-icon {
+            font-size: 3em;
+            color: #3BB540;
+        }
+
+        .upload-button {
+            background-color: #3BB540;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        .upload-button:hover {
+            background-color: #2e8b34;
+        }
+
+        .reset-button {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-top: 10px;
+            transition: background-color 0.3s;
+        }
+
+        .reset-button:hover {
+            background-color: #c82333;
+        }
+
+        .upload-status {
+            margin: 15px 0;
+            padding: 10px;
+            border-radius: 5px;
+            display: none;
+        }
+
+        .upload-status.success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+            display: block;
+        }
+
+        .upload-status.error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+            display: block;
+        }
+
+        .upload-status.info {
+            background-color: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+            display: block;
+        }
+
+        .debug-info {
+            margin: 15px 0;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            font-family: monospace;
+            font-size: 12px;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        .upload-actions {
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        /* Estilos para seção de estatísticas */
+        .stats-section {
+            background-color: #ffffff;
+            padding: 20px;
+            border-bottom: 2px solid #3BB540;
+        }
+
+        .stats-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .stats-container h3 {
+            color: #3BB540;
+            margin: 0 0 20px;
+            text-align: center;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+        }
+
+        .stat-card {
+            background-color: #f8f9fa;
+            border: 2px solid #3BB540;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(59, 181, 64, 0.3);
+        }
+
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #3BB540;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: #666;
+            font-weight: 500;
+        }
     </style>
 </head>
 
@@ -140,14 +374,73 @@
     <div class="header">
         <div class="header-content">
             <img src="icon.png" alt="Logo">
-            <div>
+            <div class="header-info">
                 <h1 style="margin: 0;">Mapa Interativo de Ocorrências - Nordeste</h1>
                 <p style="margin: 5px 0 0;">Passe o mouse para destacar, clique para ver detalhes e aproxime o zoom para ver os nomes dos municípios.</p>
+            </div>
+            <div class="header-controls">
+                <button type="button" id="toggleUploadSectionBtn" class="control-btn">
+                    📁 <span id="uploadSectionText">Ocultar Upload</span>
+                </button>
+                <button type="button" id="toggleStatsSectionBtn" class="control-btn">
+                    📊 <span id="statsSectionText">Ocultar Stats</span>
+                </button>
+                <button type="button" id="maximizeMapBtn" class="control-btn">
+                    🔍 <span id="mapSizeText">Maximizar Mapa</span>
+                </button>
             </div>
         </div>
     </div>
 
-    <div id="map"></div>
+    <div class="upload-section" id="uploadSection">
+        <div class="upload-container">
+            <h3>📊 Upload de Dados de Ocorrências</h3>
+            <p>Carregue um arquivo Excel (.xlsx ou .xls) com a aba <strong>"tabela_relatorio"</strong> contendo as colunas: <strong>MUNICIPIO</strong>, <strong>ESTADO</strong>, <strong>MOTIVO</strong></p>
+            <p><small>Cada linha representa uma ocorrência individual. O sistema fará a contagem automática por município.</small></p>
+            
+            <div class="upload-area" id="uploadArea">
+                <input type="file" id="fileInput" accept=".xlsx,.xls" style="display: none;">
+                <div class="upload-content">
+                    <span class="upload-icon">📁</span>
+                    <p>Arraste o arquivo Excel aqui ou</p>
+                    <button type="button" id="uploadBtn" class="upload-button">Clique para Escolher Arquivo</button>
+                </div>
+            </div>
+
+            <div id="uploadStatus" class="upload-status"></div>
+            <div id="debugInfo" class="debug-info" style="display: none;"></div>
+            
+            <div class="upload-actions">
+                <button type="button" id="resetBtn" class="reset-button" style="display: none;">🔄 Resetar para Dados Originais</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="stats-section" id="statsSection" style="display: none;">
+        <div class="stats-container">
+            <h3>📈 Estatísticas das Ocorrências</h3>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number" id="totalOcorrencias">0</div>
+                    <div class="stat-label">Total de Ocorrências</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="municipiosComOcorrencias">0</div>
+                    <div class="stat-label">Municípios com Ocorrências</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="estadosAfetados">0</div>
+                    <div class="stat-label">Estados Afetados</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="mediaOcorrencias">0</div>
+                    <div class="stat-label">Média por Município</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="map" class="map-container"></div>
 
     <div class="table-wrapper">
         <h2>Tabela de Dados de Ocorrências</h2>
@@ -158,10 +451,16 @@
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
     <script src="https://unpkg.com/@turf/turf@6/turf.min.js"></script>
+    <script src="https://unpkg.com/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const map = L.map('map').setView([-10.0, -40.0], 5);
+
+            // Variáveis globais para gerenciar dados
+            let originalGeojsonData = {};
+            let currentGeojsonData = {};
+            let uploadedExcelData = null;
 
             L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
                 attribution: '&copy; OpenStreetMap & CARTO',
@@ -174,13 +473,469 @@
                 'PB_Municipios_2024_com_ocorrencias.geojson',
                 'AL_Municipios_2024_com_ocorrencias.geojson',
                 'BA_Municipios_2024_com_ocorrencias.geojson',
-                'CE_Municipios_2024_com_ocorrencias.geojson'
+                'CE_Municipios_2024_com_ocorrencias.geojson',
+                'RN_Municipios_2024_com_ocorrencias.geojson',
+                'MA_Municipios_2024_com_ocorrencias.geojson',
+                'PA_Municipios_2024_com_ocorrencias.geojson',
+                'PI_Municipios_2024_com_ocorrencias.geojson',
+                'TO_Municipios_2024_com_ocorrencias.geojson'
             ];
 
             const stateBorderColors = [];
 
             let geojsonLayers = [];
             let layerMap = {};
+
+            // Funções para upload e processamento de Excel
+            function initializeUploadFunctionality() {
+                const uploadArea = document.getElementById('uploadArea');
+                const fileInput = document.getElementById('fileInput');
+                const uploadBtn = document.getElementById('uploadBtn');
+                const resetBtn = document.getElementById('resetBtn');
+                const uploadStatus = document.getElementById('uploadStatus');
+
+                // Event listeners para upload
+                uploadBtn.addEventListener('click', () => fileInput.click());
+                
+                // Drag and drop no uploadArea (sem click)
+                uploadArea.addEventListener('dragover', (e) => {
+                    e.preventDefault();
+                    uploadArea.classList.add('dragover');
+                });
+                
+                uploadArea.addEventListener('dragleave', () => {
+                    uploadArea.classList.remove('dragover');
+                });
+                
+                uploadArea.addEventListener('drop', (e) => {
+                    e.preventDefault();
+                    uploadArea.classList.remove('dragover');
+                    const files = e.dataTransfer.files;
+                    if (files.length > 0) {
+                        handleFileUpload(files[0]);
+                    }
+                });
+
+                fileInput.addEventListener('change', (e) => {
+                    if (e.target.files.length > 0) {
+                        handleFileUpload(e.target.files[0]);
+                    }
+                });
+
+                resetBtn.addEventListener('click', resetToOriginalData);
+            }
+
+            function initializeViewControls() {
+                const toggleUploadBtn = document.getElementById('toggleUploadSectionBtn');
+                const toggleStatsBtn = document.getElementById('toggleStatsSectionBtn');
+                const maximizeMapBtn = document.getElementById('maximizeMapBtn');
+
+                toggleUploadBtn.addEventListener('click', toggleUploadSection);
+                toggleStatsBtn.addEventListener('click', toggleStatsSection);
+                maximizeMapBtn.addEventListener('click', toggleMapMaximize);
+            }
+
+            function toggleUploadSection() {
+                const uploadSection = document.getElementById('uploadSection');
+                const toggleText = document.getElementById('uploadSectionText');
+                
+                if (uploadSection.classList.contains('section-hidden')) {
+                    uploadSection.classList.remove('section-hidden');
+                    toggleText.textContent = 'Ocultar Upload';
+                } else {
+                    uploadSection.classList.add('section-hidden');
+                    toggleText.textContent = 'Exibir Upload';
+                }
+                
+                // Redimensionar mapa após mudança
+                setTimeout(() => map.invalidateSize(), 300);
+            }
+
+            function toggleStatsSection() {
+                const statsSection = document.getElementById('statsSection');
+                const toggleText = document.getElementById('statsSectionText');
+                
+                if (statsSection.classList.contains('section-hidden')) {
+                    statsSection.classList.remove('section-hidden');
+                    toggleText.textContent = 'Ocultar Stats';
+                } else {
+                    statsSection.classList.add('section-hidden');
+                    toggleText.textContent = 'Exibir Stats';
+                }
+                
+                // Redimensionar mapa após mudança
+                setTimeout(() => map.invalidateSize(), 300);
+            }
+
+            function toggleMapMaximize() {
+                const body = document.body;
+                const mapContainer = document.getElementById('map');
+                const toggleText = document.getElementById('mapSizeText');
+                
+                if (body.classList.contains('map-maximized')) {
+                    body.classList.remove('map-maximized');
+                    mapContainer.classList.remove('maximized');
+                    toggleText.textContent = 'Maximizar Mapa';
+                } else {
+                    body.classList.add('map-maximized');
+                    mapContainer.classList.add('maximized');
+                    toggleText.textContent = 'Restaurar Mapa';
+                }
+                
+                // Redimensionar mapa após mudança
+                setTimeout(() => map.invalidateSize(), 300);
+            }
+
+            function calculateStatistics(features) {
+                let totalOcorrencias = 0;
+                let municipiosComOcorrencias = 0;
+                const estadosAfetados = new Set();
+                
+                features.forEach(feature => {
+                    const ocorrencias = feature.properties.N_OCORRENCIAS || 0;
+                    if (ocorrencias > 0) {
+                        totalOcorrencias += ocorrencias;
+                        municipiosComOcorrencias++;
+                        estadosAfetados.add(feature.properties.SIGLA_UF);
+                    }
+                });
+
+                const mediaOcorrencias = municipiosComOcorrencias > 0 ? 
+                    (totalOcorrencias / municipiosComOcorrencias).toFixed(1) : 0;
+
+                return {
+                    totalOcorrencias,
+                    municipiosComOcorrencias,
+                    estadosAfetados: estadosAfetados.size,
+                    mediaOcorrencias
+                };
+            }
+
+            function updateStatistics(features) {
+                const stats = calculateStatistics(features);
+                
+                document.getElementById('totalOcorrencias').textContent = stats.totalOcorrencias.toLocaleString();
+                document.getElementById('municipiosComOcorrencias').textContent = stats.municipiosComOcorrencias;
+                document.getElementById('estadosAfetados').textContent = stats.estadosAfetados;
+                document.getElementById('mediaOcorrencias').textContent = stats.mediaOcorrencias;
+                
+                // Mostrar seção de estatísticas
+                document.getElementById('statsSection').style.display = 'block';
+            }
+
+            function showUploadStatus(message, type) {
+                const uploadStatus = document.getElementById('uploadStatus');
+                uploadStatus.textContent = message;
+                uploadStatus.className = `upload-status ${type}`;
+                uploadStatus.style.display = 'block';
+            }
+
+            function handleFileUpload(file) {
+                if (!file.name.match(/\.(xlsx|xls)$/)) {
+                    showUploadStatus('Por favor, selecione um arquivo Excel (.xlsx ou .xls)', 'error');
+                    return;
+                }
+
+                showUploadStatus('Processando arquivo...', 'info');
+
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    try {
+                        const data = new Uint8Array(e.target.result);
+                        const workbook = XLSX.read(data, { type: 'array' });
+                        
+                        // Procurar especificamente pela aba "tabela_relatorio"
+                        let worksheetName = 'tabela_relatorio';
+                        if (!workbook.Sheets[worksheetName]) {
+                            // Se não encontrar, tentar variações comuns
+                            const variations = ['Tabela_Relatorio', 'TABELA_RELATORIO', 'tabela relatorio', 'Tabela Relatorio'];
+                            worksheetName = variations.find(name => workbook.Sheets[name]);
+                            
+                            if (!worksheetName) {
+                                showUploadStatus(`Aba "tabela_relatorio" não encontrada. Abas disponíveis: ${workbook.SheetNames.join(', ')}`, 'error');
+                                return;
+                            }
+                        }
+                        
+                        const worksheet = workbook.Sheets[worksheetName];
+                        const jsonData = XLSX.utils.sheet_to_json(worksheet);
+
+                        processExcelData(jsonData);
+                    } catch (error) {
+                        showUploadStatus('Erro ao processar arquivo Excel: ' + error.message, 'error');
+                    }
+                };
+                reader.readAsArrayBuffer(file);
+            }
+
+            function normalizeString(str) {
+                return str.toLowerCase()
+                    .normalize('NFD')
+                    .replace(/[\u0300-\u036f]/g, '')
+                    .replace(/[^a-z0-9]/g, '');
+            }
+
+            function extractMunicipioFromTemplate(municipioCompleto) {
+                // Remove estado do final (ex: "ACOPIARA - CE" -> "ACOPIARA")
+                // Remove espaços extras e caracteres especiais
+                let municipio = municipioCompleto;
+                
+                // Se tem hífen, pega só a parte antes do hífen
+                if (municipio.includes(' - ')) {
+                    municipio = municipio.split(' - ')[0];
+                }
+                
+                // Remove caracteres especiais comuns
+                municipio = municipio.replace(/–/g, '-'); // Substituir travessão por hífen
+                municipio = municipio.replace(/\s+/g, ' ').trim(); // Normalizar espaços
+                
+                return municipio;
+            }
+
+            function processExcelData(excelData) {
+                if (!excelData || excelData.length === 0) {
+                    showUploadStatus('O arquivo Excel está vazio ou não contém dados válidos', 'error');
+                    return;
+                }
+
+                // Detectar colunas automaticamente baseado no novo formato
+                const firstRow = excelData[0];
+                const columns = Object.keys(firstRow);
+                
+                console.log('Colunas detectadas:', columns);
+                
+                const municipioCol = columns.find(col => 
+                    normalizeString(col).includes('municipio') || 
+                    normalizeString(col).includes('cidade') ||
+                    normalizeString(col).includes('nm_mun')
+                );
+                
+                const estadoCol = columns.find(col => 
+                    normalizeString(col).includes('estado') || 
+                    normalizeString(col).includes('uf') ||
+                    normalizeString(col).includes('sigla')
+                );
+                
+                // Para este formato, não precisamos da coluna de ocorrências
+                // Vamos contar as linhas por município/estado
+                const motivoCol = columns.find(col => 
+                    normalizeString(col).includes('motivo') || 
+                    normalizeString(col).includes('causa') ||
+                    normalizeString(col).includes('razao')
+                );
+
+                console.log('Colunas mapeadas:', { municipioCol, estadoCol, motivoCol });
+
+                if (!municipioCol || !estadoCol) {
+                    showUploadStatus(`Colunas obrigatórias não encontradas. Detectadas: ${columns.join(', ')}. Necessárias: MUNICIPIO, ESTADO`, 'error');
+                    return;
+                }
+
+                // Objeto para agregar as contagens por município/estado
+                const municipioContador = {};
+                let processedCount = 0;
+                let debugInfo = [];
+
+                excelData.forEach((row, index) => {
+                    const municipio = row[municipioCol];
+                    const estado = row[estadoCol];
+                    const motivo = row[motivoCol] || 'Não informado';
+
+                    // Verificar se município e estado não são vazios/null/undefined
+                    if (municipio && estado && 
+                        municipio.toString().trim() !== '' && 
+                        estado.toString().trim() !== '') {
+                        
+                        // Limpar o nome do município (remover espaços extras, etc.)
+                        const municipioLimpo = municipio.toString().trim();
+                        const estadoLimpo = estado.toString().trim();
+                        
+                        // Criar chave única para município + estado
+                        const chaveUnica = `${municipioLimpo}_${estadoLimpo}`;
+                        
+                        // Incrementar contador para este município/estado
+                        if (!municipioContador[chaveUnica]) {
+                            municipioContador[chaveUnica] = {
+                                municipio: municipioLimpo,
+                                estado: estadoLimpo,
+                                ocorrencias: 0,
+                                motivos: []
+                            };
+                        }
+                        
+                        municipioContador[chaveUnica].ocorrencias++;
+                        municipioContador[chaveUnica].motivos.push(motivo);
+                        
+                        if (index < 5) { // Debug primeiros 5 registros
+                            debugInfo.push({
+                                linha: index + 1,
+                                municipio: municipioLimpo,
+                                estado: estadoLimpo,
+                                motivo: motivo,
+                                chave: chaveUnica
+                            });
+                        }
+                        
+                        processedCount++;
+                    } else {
+                        // Log de registros ignorados para debug
+                        if (index < 10) { // Mostrar apenas os primeiros 10 problemas
+                            console.warn(`Linha ${index + 1} ignorada:`, {
+                                municipio: municipio,
+                                estado: estado,
+                                municipioVazio: !municipio || municipio.toString().trim() === '',
+                                estadoVazio: !estado || estado.toString().trim() === ''
+                            });
+                        }
+                    }
+                });
+
+                console.log('Primeiros 5 registros processados:', debugInfo);
+                console.log('Total de linhas no Excel:', excelData.length);
+                console.log('Total de registros válidos processados:', processedCount);
+                console.log('Registros ignorados:', excelData.length - processedCount);
+                console.log('Municípios únicos encontrados:', Object.keys(municipioContador).length);
+
+                // Converter o objeto de contadores para o formato esperado
+                uploadedExcelData = {};
+                let totalOcorrenciasContadas = 0;
+                
+                Object.keys(municipioContador).forEach(chave => {
+                    const dados = municipioContador[chave];
+                    const keyNormalizada = normalizeString(`${dados.municipio}_${dados.estado}`);
+                    uploadedExcelData[keyNormalizada] = dados.ocorrencias;
+                    totalOcorrenciasContadas += dados.ocorrencias;
+                });
+
+                console.log('Dados agregados:', uploadedExcelData);
+                console.log('Total de ocorrências contadas:', totalOcorrenciasContadas);
+                console.log('Registros processados:', processedCount);
+
+                if (totalOcorrenciasContadas !== processedCount) {
+                    console.warn(`Discrepância detectada: ${processedCount} registros processados vs ${totalOcorrenciasContadas} ocorrências contadas`);
+                }
+
+                if (Object.keys(uploadedExcelData).length === 0) {
+                    showUploadStatus('Nenhum dado válido encontrado no Excel', 'error');
+                    return;
+                }
+
+                applyExcelDataToMap();
+                
+                const municipiosUnicos = Object.keys(municipioContador).length;
+                showUploadStatus(`✅ Dados carregados com sucesso! ${processedCount} registros individuais agregados em ${municipiosUnicos} municípios únicos (Total: ${totalOcorrenciasContadas} ocorrências)`, 'success');
+                document.getElementById('resetBtn').style.display = 'inline-block';
+            }
+
+            function applyExcelDataToMap() {
+                // Limpar camadas existentes
+                geojsonLayers.forEach(layer => map.removeLayer(layer));
+                geojsonLayers = [];
+                layerMap = {};
+
+                let allFeatures = [];
+                let matchedCount = 0;
+                let totalGeoJsonFeatures = 0;
+
+                // Aplicar dados do Excel aos GeoJSON
+                Object.keys(originalGeojsonData).forEach(fileName => {
+                    const geojsonData = JSON.parse(JSON.stringify(originalGeojsonData[fileName])); // Deep copy
+
+                    if (geojsonData.features) {
+                        geojsonData.features.forEach(feature => {
+                            totalGeoJsonFeatures++;
+                            const municipio = feature.properties.NM_MUN;
+                            const estado = feature.properties.SIGLA_UF;
+                            
+                            // Tentar várias variações do nome para matching
+                            const variations = [
+                                normalizeString(`${municipio}_${estado}`),
+                                normalizeString(`${municipio.replace(/\s+/g, '')}_${estado}`),
+                                normalizeString(`${municipio.replace(/'/g, '')}_${estado}`),
+                            ];
+
+                            let found = false;
+                            for (const key of variations) {
+                                if (uploadedExcelData[key] !== undefined) {
+                                    feature.properties.N_OCORRENCIAS = uploadedExcelData[key];
+                                    matchedCount++;
+                                    found = true;
+                                    break;
+                                }
+                            }
+
+                            if (!found) {
+                                feature.properties.N_OCORRENCIAS = 0;
+                            }
+                        });
+
+                        allFeatures.push(...geojsonData.features);
+                    }
+
+                    currentGeojsonData[fileName] = geojsonData;
+                });
+
+                console.log(`Matching completo: ${matchedCount} de ${totalGeoJsonFeatures} municípios encontrados`);
+
+                // Recriar camadas do mapa
+                Object.keys(currentGeojsonData).forEach(fileName => {
+                    const data = currentGeojsonData[fileName];
+                    const municipiosLayer = L.geoJson(data, {
+                        style: styleMunicipios,
+                        onEachFeature,
+                        filter: f => f.properties.N_OCORRENCIAS > 0
+                    }).addTo(map);
+                    geojsonLayers.push(municipiosLayer);
+                });
+
+                // Atualizar tabela
+                populateDataTable(allFeatures);
+                toggleLabels();
+
+                // Atualizar estatísticas
+                updateStatistics(allFeatures);
+
+                // Mostrar estatísticas de matching
+                const statusElement = document.getElementById('uploadStatus');
+                const currentText = statusElement.textContent;
+                statusElement.textContent = `${currentText} | ${matchedCount} municípios encontrados no mapa`;
+            }
+
+            function resetToOriginalData() {
+                // Limpar camadas existentes
+                geojsonLayers.forEach(layer => map.removeLayer(layer));
+                geojsonLayers = [];
+                layerMap = {};
+
+                let allFeatures = [];
+
+                // Recriar camadas com dados originais
+                Object.keys(originalGeojsonData).forEach(fileName => {
+                    const data = originalGeojsonData[fileName];
+                    if (data.features) allFeatures.push(...data.features);
+
+                    const municipiosLayer = L.geoJson(data, {
+                        style: styleMunicipios,
+                        onEachFeature,
+                        filter: f => f.properties.N_OCORRENCIAS > 0
+                    }).addTo(map);
+                    geojsonLayers.push(municipiosLayer);
+                });
+
+                // Atualizar tabela com dados originais
+                populateDataTable(allFeatures);
+                toggleLabels();
+
+                // Atualizar estatísticas com dados originais
+                updateStatistics(allFeatures);
+
+                // Resetar interface
+                document.getElementById('uploadStatus').style.display = 'none';
+                document.getElementById('resetBtn').style.display = 'none';
+                uploadedExcelData = null;
+
+                showUploadStatus('Dados resetados para os valores originais', 'info');
+            }
 
             function getColor(ocorrencias) {
                 if (ocorrencias > 100) return '#800026';
@@ -294,6 +1049,10 @@
                 .then(dataArray => {
                     let allFeatures = [];
                     dataArray.forEach((data, index) => {
+                        // Armazenar dados originais
+                        originalGeojsonData[dataLayersFiles[index]] = JSON.parse(JSON.stringify(data));
+                        currentGeojsonData[dataLayersFiles[index]] = data;
+
                         if (data.features) allFeatures.push(...data.features);
 
                         const municipiosLayer = L.geoJson(data, {
@@ -309,6 +1068,15 @@
 
                     populateDataTable(allFeatures);
                     toggleLabels();
+                    
+                    // Mostrar estatísticas iniciais
+                    updateStatistics(allFeatures);
+                    
+                    // Inicializar funcionalidade de upload
+                    initializeUploadFunctionality();
+                    
+                    // Inicializar controles de visualização
+                    initializeViewControls();
                 })
                 .catch(err => {
                     console.error('Erro ao carregar os arquivos GeoJSON de dados:', err);
